@@ -3,30 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Download File</title>
+    <title>Redirect and Auto Download</title>
 </head>
 <body>
     <script>
-        // Function to trigger file download
-        function downloadFile() {
-            // Create a dummy element
-            var link = document.createElement("a");
-            // Set the href attribute to the URL of the file to be downloaded
-            link.href = "path/to/your/file.ext"; // Replace "path/to/your/file.ext" with the actual path to your file
-            // Set the download attribute to specify the file name
-            link.download = "filename.ext"; // Replace "filename.ext" with the desired file name
-            // Append the link to the body
-            document.body.appendChild(link);
-            // Programmatically trigger a click event on the link
-            link.click();
-            // Remove the link from the body
-            document.body.removeChild(link);
+        // Function to trigger automatic download
+        function downloadFile(url) {
+            var anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = '';
+            anchor.click();
         }
 
-        // Call the downloadFile function when the page loads
-        window.onload = function() {
-            downloadFile();
-        };
+        // Redirect to a URL after 3 seconds and trigger download
+        setTimeout(function() {
+            // Replace 'https://example.com/your-file.html' with the URL of your HTML file
+            var url = 'https://example.com/your-file.html';
+            window.location.href = url;
+            downloadFile(url);
+        }, 3000); // 3 seconds delay
     </script>
 </body>
 </html>
